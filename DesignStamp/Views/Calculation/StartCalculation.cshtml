@@ -1,0 +1,16 @@
+﻿@model StartDetailView
+@{
+    ViewData["Title"] = "Сalculation";
+}
+
+<h1>Расчет прошел успешно!!!</h1>
+
+<br/>
+<br />
+
+<div class="row">
+        
+    <a class="col-md-4 btn btn-secondary" asp-controller="Stamps" asp-action="GetStamp" asp-route-StampName="@Model.StampName" > Посмотреть результат</a>
+    <a asp-action="Index" class="col-md-4 offset-md-4 btn btn-secondary" >Назад</a>
+
+</div>

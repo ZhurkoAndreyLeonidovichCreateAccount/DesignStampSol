@@ -1,0 +1,86 @@
+﻿@model PressView
+<h3>Пресс</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th  width="110">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Ppress)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.PressRamStroke)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.LengthAdapt)
+            </th>
+
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.WidthAdapt)
+            </th>
+            <th>
+                По размерам
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Ppress)
+
+                @if (Model.Pflag)
+                {
+                   <img src="~/images/Успех.png" height="50" width="50"/>
+                }
+                else
+                {
+                <img  src="~/images/Провал.png" height="50" width="50"/>
+                }
+
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PressRamStroke)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.LengthAdapt)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.WidthAdapt)
+            </td>
+            <td>
+                @if (Model.PerimetrFlag)
+                {
+                    <img src="~/images/Успех.png" height="50" width="50" />
+                }
+                else
+                {
+                    <img src="~/images/Провал.png" height="50" width="50" />
+                }
+            </td>
+            
+            <td  width="110">
+
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                <a class="btn btn-outline-info" asp-controller="Presses" asp-action="ChoosePress"  asp-route-oldId="@Model.Id" asp-route-url="@returnUrl"><span class="fas fa-edit"></span></a>
+                <a class="btn btn-outline-success" asp-controller="Presses" asp-action="DetailsView" asp-route-id="@Model.Id"><span class="fas fa-info"></span></a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+

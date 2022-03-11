@@ -1,0 +1,47 @@
+﻿@model DataLayer.Entities.Column
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редактирование</h1>
+
+<h4>Колонка</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diametr" class="control-label"></label>
+                <input asp-for="Diametr" class="form-control" />
+                <span asp-validation-for="Diametr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeightDepth" class="control-label"></label>
+                <input asp-for="HeightDepth" class="form-control" />
+                <span asp-validation-for="HeightDepth" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <input type="submit" value="Сохранить" class="col-md-4 btn btn-secondary" />
+                <a class="col-md-5 offset-md-3 btn btn-secondary" asp-action="Index">Назад к списку </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

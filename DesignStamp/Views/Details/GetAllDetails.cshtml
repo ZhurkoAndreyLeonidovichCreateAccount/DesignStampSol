@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DetailView>
+
+@{
+    ViewData["Title"] = "Index";
+    int Flag = (int)ViewData["Flag"];
+}
+
+<h2>Все детали</h2>
+<form asp-controller="Details" asp-action="GetAllDetails">
+    <div class="form-group row">
+        <div class="col-md-3">
+            <input class="form-control me-2 " type="search" name="name" placeholder="Введите № детали" aria-label="Search">
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-outline-success " type="submit">Поиск</button>
+        </div>
+    </div>
+</form>
+
+
+@if(Model.Count()!=0)
+{
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StampName)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thickness)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShearingStress)
+            </th>*@
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                @if (item.StampName != "Нету штампа")
+                {
+                    <a asp-controller="Stamps" asp-action="GetStamp" asp-route-stampName="@item.StampName" asp-route-returnUrl="@returnUrl">@Html.DisplayFor(modelItem => item.StampName)</a>
+                }
+                else
+                {
+                   @Html.DisplayFor(modelItem => item.StampName)
+                }
+
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thickness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShearingStress)
+            </td>*@
+           
+            <td>
+                
+                <a class="btn btn-outline-success" asp-controller="Details" asp-action="Details" asp-route-name="@item.Name" asp-route-returnUrl="@returnUrl"><span class="fas fa-info"></span></a>
+                <span>&nbsp</span>
+                <a class="btn btn-outline-danger" asp-controller="Details" asp-action="Delete" asp-route-name="@item.Name" asp-route-returnUrl="@returnUrl"> <span class="fas fa-trash-alt"></span></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}
+
+else if(Flag==0)
+{
+ <h3>Деталь с таким номером не найдена</h3>
+}
+  else
+  {
+   <h3>Нету ни одной сохраненной детали</h3>
+  }
+

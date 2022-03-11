@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+     
+
+    
+
+}
+
+
+
+<p></p>
+<table class="table table-borderless align-content-center">
+
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+
+            <th>
+
+            </th>
+            <th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+
+            <td>
+                <a class="btn btn-secondary" asp-controller="Columns">Колонки</a>
+            </td>
+            <td>
+                <a class="btn btn-secondary" asp-controller="Bushings">Втулки</a>
+            </td>
+            <td>
+                <a class="btn btn-secondary" asp-controller="Covers">Кожухи</a>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                <a class="btn btn-secondary" asp-controller="Punches">Пуансоны</a>
+            </td>
+            <td>
+                <a class="btn btn-secondary" asp-controller="EnlargedPunches">Увеличенные пуансоны</a>
+            </td>
+            <td>
+                <a class="btn btn-secondary" asp-controller="Springs">Пружины</a>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+                <a class="btn btn-secondary" asp-controller="Presses">Пресса</a>
+            </td>
+
+            <td>
+                <a class="btn btn-secondary" asp-controller="Admin" asp-action="GetAllUsers">Пользователи</a>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+

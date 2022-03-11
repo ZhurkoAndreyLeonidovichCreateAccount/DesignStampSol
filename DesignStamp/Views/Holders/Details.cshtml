@@ -1,0 +1,72 @@
+﻿@model HolderView
+
+
+@{
+    ViewData["Title"] = "Holder";
+}
+
+<h3>Державка</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalHieght)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyHieght)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.TotalHieght)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.BodyHieght)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Weight)
+            </td>
+            <td>
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                <a class="btn btn-outline-info" asp-controller="Holders" asp-action="Edit" asp-route-stampName="@Model.StampName" asp-route-returnUrl="@returnUrl"><span class="fas fa-edit"></span></a>
+
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="row">
+
+    <a class="col-md-4 offset-md-4 btn btn-secondary" asp-controller="Stamps" asp-action="GetStamp" asp-route-stampName="@Model.StampName"> Вернутся к штампу</a>
+
+</div>

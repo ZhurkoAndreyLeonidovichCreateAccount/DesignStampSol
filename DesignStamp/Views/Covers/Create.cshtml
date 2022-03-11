@@ -1,0 +1,47 @@
+﻿@model DataLayer.Entities.Cover
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Создание</h1>
+
+<h4>Кожух</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalHeight" class="control-label"></label>
+                <input asp-for="TotalHeight" class="form-control" />
+                <span asp-validation-for="TotalHeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PressHeight" class="control-label"></label>
+                <input asp-for="PressHeight" class="form-control" />
+                <span asp-validation-for="PressHeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diametr" class="control-label"></label>
+                <input asp-for="Diametr" class="form-control" />
+                <span asp-validation-for="Diametr" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <input type="submit" value="Создать" class="col-md-4 btn btn-secondary" />
+                <a class="col-md-5 offset-md-3 btn btn-secondary" asp-action="Index">Назад к списку </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

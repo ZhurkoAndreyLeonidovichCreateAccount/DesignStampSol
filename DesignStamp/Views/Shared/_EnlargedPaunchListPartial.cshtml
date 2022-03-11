@@ -1,0 +1,86 @@
+﻿@model List<EnlargedPunchView>
+
+
+@if (Model != null)
+{
+    <h3>Увеличенные пуансоны</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th  width="110">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+                </th>
+                <th class="align-text-top">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().DiametrHoleFirst)
+                </th>
+                <th class="align-text-top">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().DiametrHoleLast)
+                </th>
+                <th class="align-text-top">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().DiametrSeat)
+                </th>
+                <th class="align-text-top">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().DiametrFlange)
+                </th>
+                <th class="align-text-top">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().HeightTottal)
+                </th>
+                <th class="align-text-top">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().HeighSeat)
+                </th>
+                <th class="align-text-top">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().HeighFlange)
+                </th>
+
+                <th class="align-text-top">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().AmountEnlargedPunch)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiametrHoleFirst)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiametrHoleLast)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiametrSeat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiametrFlange)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeightTottal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeighSeat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeighFlange)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountEnlargedPunch)
+                </td>
+                <td  width="110">
+                    @{ // Получение текущего адреса
+                        var request = ViewContext.HttpContext.Request;
+                        var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                    }
+                    <a class="btn btn-outline-info" asp-controller="EnlargedPunches" asp-action="ChooseEnlargedPunch" asp-route-diametr="@item.DiametrHoleFirst" asp-route-oldId="@item.Id" asp-route-url="@returnUrl"><span class="fas fa-edit"></span></a>
+                    <a class="btn btn-outline-success" asp-controller="EnlargedPunches" asp-action="DetailsView" asp-route-id="@item.Id"><span class="fas fa-info"></span></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

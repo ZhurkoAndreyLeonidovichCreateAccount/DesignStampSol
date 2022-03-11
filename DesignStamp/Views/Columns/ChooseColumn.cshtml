@@ -1,0 +1,105 @@
+﻿@model IEnumerable<DataLayer.Entities.Column>
+
+@{
+    ViewData["Title"] = "ChooseColumn";
+    var groups = ViewData["Drops"] as List<DropVIew>;
+    var currentDiametr = (int)ViewData["Current"];
+    var text = currentDiametr != 0 ? currentDiametr.ToString() : "Все";
+
+}
+
+<h3>Выберите колонку</h3>
+<hr />
+<div class="row">
+    <h4 div class="col-4">Фильтр по диаметру колонки:</h4>
+    <div class="col-4">
+        <div class="dropdown mt-2">
+            <a class="btn btn-secondary dropdown-toggle"
+               asp-action="Index" asp-controller="Product" role="button"
+               id="dropdownMenuLink"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                @text
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                <a class="dropdown-item"
+                   asp-action="ChooseColumn"
+                   asp-controller="Columns"
+                   asp-route-oldId="@groups.FirstOrDefault().OldId"
+                   asp-route-url="@groups.FirstOrDefault().Url">
+
+                    Все
+                </a>
+
+                @foreach (var item in groups)
+                {
+                    <a class="dropdown-item"
+                       asp-action="ChooseColumn"
+                       asp-controller="Columns"
+                       asp-route-diametr="@item.Diametr"
+                       asp-route-oldId="@item.OldId"
+                        asp-route-url="@item.Url">
+                        @item.Diametr
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diametr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightDepth)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diametr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightDepth)
+            </td>
+            <td>
+                <a class="btn btn-secondary" asp-controller="Stamps" asp-action="EditColumn" asp-route-id="@item.Id" asp-route-oldId="@groups.FirstOrDefault().OldId">Выбрать </a>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div class="form-group offset-md-4 col-md-4 ">
+    <a href="@groups.FirstOrDefault().Url" class="btn btn-secondary">
+        Назад
+    </a>
+</div>

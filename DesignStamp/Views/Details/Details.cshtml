@@ -1,0 +1,81 @@
+﻿@model Detail
+
+
+@{
+    string url = (string)ViewData["Url"] ?? "#";
+    ViewData["Title"] = "Detail";
+}
+
+<h3>Деталь</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thickness)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShearingStress)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Thickness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ShearingStress)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => modelItem.Weight)
+                </td>*@
+            <td>
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                <a class="btn btn-outline-danger" asp-controller="Details" asp-action="Delete" asp-route-stampName="@Model.Name" asp-route-returnUrl="@returnUrl"> <span class="fas fa-trash-alt"></span></a>
+
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+        @if (Model.AmountDiametrHoles != 0)
+        {
+            <br />
+            <partial name="_DifferHolePartial" model="Model.differHoles" />
+            <br />
+        }
+
+
+<div class="row">
+
+    @*<a class="col-md-4 offset-md-4 btn btn-secondary" asp-controller="Stamps" asp-action="GetStamp" asp-route-stampName="@Model."> Вернутся к штампу</a>*@
+    <a href="@url" class="col-md-3 offset-md-4 btn btn-secondary">
+        Назад
+    </a>
+
+</div>

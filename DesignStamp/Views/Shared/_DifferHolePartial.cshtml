@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DifferHole>
+@{
+    ViewData["Title"] = "AllDataView";
+    int i = 1;
+}
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountHole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diametr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        @foreach (var item in Model)
+        {
+            
+            <tr>
+                <td>
+                    @($"{ i++}")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountHole)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diametr)
+                </td>
+                @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

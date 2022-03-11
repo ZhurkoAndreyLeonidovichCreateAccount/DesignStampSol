@@ -1,0 +1,53 @@
+﻿@model AllForceView
+<h3>Усилия</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pfelling)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ppunching)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ptotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ppress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qremoval)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Pfelling)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Ppunching)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Ptotal)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Ppress)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Qremoval)
+            </td>
+            
+           
+        </tr>
+
+    </tbody>
+</table>
+<div class="row">
+
+    <a class="col-md-4 offset-md-4 btn btn-secondary" asp-controller="Stamps" asp-action="GetStamp" asp-route-stampName="@Model.StampName"> Вернутся к штампу</a>
+
+</div>

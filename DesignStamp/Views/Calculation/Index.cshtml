@@ -1,0 +1,188 @@
+﻿
+@model StartDetailView
+
+@{
+    ViewData["Title"] = "Меню";
+
+}
+
+
+
+
+
+
+    @*<div class="row">
+        <div class="col-md-4">*@
+<div >
+    <form method="post" asp-action="DifferHoles">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.Name" class="control-label"></label>
+                <input asp-for="@Model.Name" class="form-control" placeholder="#* - #*" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.Length" class="control-label"></label>
+                <input asp-for="@Model.Length" class="form-control" placeholder="150 - 600" />
+                <span asp-validation-for="@Model.Length" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.Width" class="control-label"></label>
+                <input asp-for="@Model.Width" class="form-control" placeholder="150 - 600" />
+                <span asp-validation-for="@Model.Width" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.Thickness" class="control-label"></label>
+                <input asp-for="@Model.Thickness" class="form-control" placeholder="1 - 10" />
+                <span asp-validation-for="@Model.Thickness" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.ShearingStress" class="control-label"></label>
+                <input asp-for="@Model.ShearingStress" class="form-control" placeholder="40 - 1000" />
+                <span asp-validation-for="@Model.ShearingStress" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.AmountDiametrHoles" class="control-label"></label>
+                <input asp-for="@Model.AmountDiametrHoles" class="form-control" placeholder="0 - 50" />
+                <span asp-validation-for="@Model.AmountDiametrHoles" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.StampName" class="control-label"></label>
+                <input asp-for="@Model.StampName" class="form-control" placeholder="#### - #*" />
+                <span asp-validation-for="@Model.StampName" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.ClosedHeight" class="control-label"></label>
+                <input asp-for="@Model.ClosedHeight" class="form-control" placeholder="470-520" />
+                <span asp-validation-for="@Model.ClosedHeight" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label asp-for="@Model.IdPress" class="control-label"><h4>Выберите пресс:</h4></label>
+            </div>
+            <div class="col-md-4 mb-3">
+                <select id="1" asp-items="@(ViewData["Lst"] as SelectList)" asp-for="@Model.IdPress" class="btn btn-secondary"></select>
+                <span asp-validation-for="@Model.IdPress" class="text-danger"></span>
+            </div>
+
+            @*<div class="col-md-4 mb-3">
+                    <a href="#" class="btn btn-secondary">Добавить пресс</a>
+                </div>*@
+        </div>
+
+        @*<div id="Differs">
+                <h3>Введите данные по отверстиям: </h3>
+            </div>*@
+        @*<div class="col-md-4 mb-3">
+                <button id="differ" class="btn btn-secondary"> + </button>
+            </div>*@
+        <br />
+
+        <div class="form-group">
+            <input type="submit" value="Далее" class="btn btn-secondary" />
+        </div>
+
+
+    </form>
+
+</div>
+
+@*</div>
+    </div>*@
+
+
+@*@section scripts{ 
+<script>
+    var DiffersCount = 0;
+
+    $(document).ready(function () {
+        $("#differ").click(AddDiffer);
+        $(".remove-differ").click(RemoveDiffer);
+    })
+
+    function AddDiffer() {
+        var DifferContainer = $("<div/>").attr("id", "DifferContainer" + DiffersCount).appendTo("#Differs");
+
+        //$("<h5/>").text("Отверстие " + (DiffersCount + 1)).appendTo(DifferContainer);
+        var DiametrDiv = $("<div/>").attr("class", "form-group").appendTo(DifferContainer);
+        $("<label/>").attr("for", "DifferHoles_" + DiffersCount + "__Diametr").text("Диаметр")
+            .attr("id", DiffersCount + "__Diametr")
+            //.attr("name", "DifferHoles[" + DiffersCount + "].Diametr")
+            .attr("class", "control-label").appendTo(DiametrDiv);
+        $("<input/>").attr("id", "DifferHoles_" + DiffersCount + "__Diametr")
+            .attr("name", "DifferHoles[" + DiffersCount + "].Diametr").attr("data-val", true).attr("data-val-required", "Поле диаметр обязательно для заполнения.").attr("type", "number").attr("value", "")
+            .attr("class", "form-control").appendTo(DiametrDiv);
+        $("<span/>").attr("class", "text-danger field-validation-valid")
+            .attr("id", "validD" + DiffersCount)
+            .attr("data-valms-for", "[" + DiffersCount + "].Diametr")
+            .attr("data-valmsg-replace", true).appendTo(DiametrDiv);
+
+        var AmountHoleDiv = $("<div/>").attr("class", "form-group").appendTo(DifferContainer);
+        $("<label/>").attr("for", "zDifferHoles_" + DiffersCount + "__AmountHole")
+            .attr("id", "DifferHoles_" + DiffersCount + "__AmountHole")
+            //.attr("name", "DifferHoles[" + DiffersCount + "].AmountHole")
+            .attr("class", "control-label").appendTo(AmountHoleDiv);
+        $("<input/>").attr("id", "DifferHoles_" + DiffersCount + "__AmountHole")
+            .attr("name", "DifferHoles[" + DiffersCount + "].AmountHole")
+            .attr("class", "form-control").appendTo(AmountHoleDiv);
+        $("<span/>").attr("class", "text-danger field-validation-valid")
+            .attr("id", "validAH" + DiffersCount)
+            .attr("data-valms-for", "[" + DiffersCount + "].AmountHole")
+            .attr("data-valmsg-replace", true).appendTo(AmountHoleDiv);
+
+        var RemoveButton = $("<input/>").attr("type", "button").attr("class", "remove-differ")
+            .attr("id", "remove" + DiffersCount)
+            .attr("value", "Удалить отверстие №" + (DiffersCount + 1)).appendTo(DifferContainer);
+        RemoveButton.click(RemoveDiffer);
+
+        DiffersCount++;
+    }
+    function RemoveDiffer() {
+        var RecalculateStartNum = parseInt($(this).parent().attr("id").substring("DifferContainer".length));
+        $(this).parent().remove();
+        for (var i = RecalculateStartNum + 1; i < DiffersCount; i++) {
+            RecalculateNamesAndIdsDiffers(i);
+        }
+        DiffersCount--;
+    }
+    function RecalculateNamesAndIdsDiffers(number) {
+        var prevNumber = number - 1;
+        $("#DifferContainer" + number).attr("id", "DifferContainer" + prevNumber);
+        $("#" + number + "__Diametr").attr("id", "DifferHoles_" + prevNumber + "__Diametr")
+            .attr("for", "DifferHoles_" + prevNumber + "__Diametr");
+        $("#DifferHoles_" + number + "__Diametr").attr("id", "DifferHoles_" + prevNumber + "__Diametr")
+            .attr("name", "DifferHoles[" + prevNumber + "].Diametr");
+        $("#validD" + number).attr("id", "validD" + prevNumber).attr("data-valms-for", "[" + prevNumber + "].Diametr");
+
+
+
+        $("#remove" + number).attr("id", "remove" + prevNumber).val("Удалить отверстие №" + (prevNumber + 1));
+    }
+
+
+</script>*@
+@*}*@ 
+
+
+
+@*<div class="form-group">
+    <label class="control-label" for="z1__Diametr">Diametr</label>
+    <input class="form-control" type="number" data-val="true" data-val-required="The Diametr field is required." id="z1__Diametr" name="[1].Diametr" value="">
+    <span class="text-danger field-validation-valid" data-valmsg-for="[1].Diametr" data-valmsg-replace="true"></span>
+</div>
+
+
+<div class="form-group">
+<label for="DifferHoles_0__Diametr" id="0__Diametr" class="control-label"></label>
+<input id="DifferHoles_0__Diametr" name="DifferHoles[0].Diametr" class="form-control">
+    <span class="text-danger field-validation-valid" id="validD0" data-valms-for="[0].Diametr" data-valmsg-replace="true"></span>
+</div>*@

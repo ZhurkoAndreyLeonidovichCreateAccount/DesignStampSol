@@ -1,0 +1,63 @@
+﻿@model DataLayer.Entities.Spring
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редактирование</h1>
+
+<h4>Пружина</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pspring" class="control-label"></label>
+                <input asp-for="Pspring" class="form-control" />
+                <span asp-validation-for="Pspring" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diametr" class="control-label"></label>
+                <input asp-for="Diametr" class="form-control" />
+                <span asp-validation-for="Diametr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tmin" class="control-label"></label>
+                <input asp-for="Tmin" class="form-control" />
+                <span asp-validation-for="Tmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tmax" class="control-label"></label>
+                <input asp-for="Tmax" class="form-control" />
+                <span asp-validation-for="Tmax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stroke" class="control-label"></label>
+                <input asp-for="Stroke" class="form-control" />
+                <span asp-validation-for="Stroke" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LengthScrew" class="control-label"></label>
+                <input asp-for="LengthScrew" class="form-control" />
+                <span asp-validation-for="LengthScrew" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <input type="submit" value="Сохранить" class="col-md-4 btn btn-secondary" />
+                <a class="col-md-5 offset-md-3 btn btn-secondary" asp-action="Index">Назад к списку </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

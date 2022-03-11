@@ -1,0 +1,93 @@
+﻿@model StampView
+
+@{
+    ViewData["Title"] = "GetStamp";
+    string url = (string)ViewData["Url"] ?? "#";
+}
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClosedHeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameDetail)
+            </th>
+
+            <th>
+
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ClosedHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Weight)
+            </td>
+            <td>
+
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                @Html.DisplayFor(model => model.NameDetail)
+                <a class="btn btn-outline-success" asp-controller="Details" asp-action="Details" asp-route-name="@Model.NameDetail" asp-route-returnUrl="@returnUrl"><span class="fas fa-info"></span></a>
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-controller="Stamps" asp-action="DeleteStamp" asp-route-stampName="@Model.Name" asp-route-returnUrl="@returnUrl">Удалить штамп</a>
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+<partial name="_AllForecePartial" model="Model.AllForce" />
+<partial name="_MatrixPartial" model="Model.Matrix" />
+
+<partial name="_HolderPartial" model="Model.Holder" />
+<partial name="_PunchMatrixPartial" model="Model.PunchMatrix" />
+
+<partial name="_PullerPartial" model="Model.Puller" />
+
+<partial name="_BottomPlatePartial" model="Model.BottomPlate" />
+
+<partial name="_TopPlatePartial" model="Model.TopPlate" />
+
+<partial name="_ColumnPartial" model="Model.Column" />
+<partial name="_BushingPartial" model="Model.Bushing" />
+<partial name="_CoverPartial" model="Model.Cover" />
+<partial name="_SpringPartial" model="Model.Spring" />
+<partial name="_PaunchListPartial" model="Model.Punches" />
+<partial name="_EnlargedPaunchListPartial" model="Model.EnlargedPunches" />
+<partial name="_PressPartial" model="Model.Press" />
+
+<div class="row">
+
+    @*<a class="col-md-4 offset-md-4 btn btn-secondary" asp-controller="Stamps" asp-action="GetStamp" asp-route-stampName="@Model."> Вернутся к штампу</a>*@
+    <a href="@url" class="col-md-3 offset-md-4 btn btn-secondary">
+        Назад
+    </a>
+
+</div>
+
+

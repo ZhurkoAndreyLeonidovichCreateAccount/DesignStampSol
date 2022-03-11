@@ -1,0 +1,87 @@
+﻿@model BottomPlateView
+<h3>Нижняя плита</h3>
+<table class="table table-bordered">
+<thead>
+    <tr>
+        <th width="110" class="align-text-top">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.TotalLength)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.TotalWidth)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.Hieght)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.SfelfHeight)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.SfelfWidth)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.СastLength)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.СastWidth)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.СastHeight)
+        </th>
+        <th class="align-text-top">
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+   
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.TotalLength)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.TotalWidth)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Hieght)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.SfelfHeight)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.SfelfWidth)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.СastLength)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.СastWidth)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.СastHeight)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Weight)
+        </td>
+        <td width="110">
+
+            @{ // Получение текущего адреса
+                var request = ViewContext.HttpContext.Request;
+                var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+            }
+
+            <a class="btn btn-outline-info" asp-controller="BottomPlates" asp-action="Edit" asp-route-stampName="@Model.StampName" asp-route-returnUrl="@returnUrl"><span class="fas fa-edit"></span></a>
+            <a class="btn btn-outline-success" asp-controller="BottomPlates" asp-action="Details" asp-route-stampName="@Model.StampName"><span class="fas fa-info"></span></a>
+        </td>
+    </tr>
+    
+</tbody>
+</table>

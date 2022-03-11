@@ -1,0 +1,57 @@
+﻿@model DataLayer.Entities.Matrix
+
+@{
+    ViewData["Title"] = "Edit";
+    string url = (string)ViewData["Url"]??"#";
+}
+
+<h2>Редактирование</h2>
+
+<h4>Матрица</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Length" class="control-label"></label>
+                <input asp-for="Length" class="form-control" />
+                <span asp-validation-for="Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Width" class="control-label"></label>
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hieght" class="control-label"></label>
+                <input asp-for="Hieght" class="form-control" />
+                <span asp-validation-for="Hieght" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="StampName" />
+            <div class="form-row">
+                <div class="form-group col-md-2 ">
+                    <input type="submit" value="Сохранить" class="btn btn-secondary" />
+                </div >
+                <div class="form-group offset-md-2 col-md-2 ">
+                    <a href="@url" class="btn btn-secondary">
+                        Назад
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

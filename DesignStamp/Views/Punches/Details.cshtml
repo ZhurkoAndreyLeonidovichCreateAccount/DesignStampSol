@@ -1,0 +1,69 @@
+﻿@model DataLayer.Entities.Punch
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Просмотр</h1>
+
+
+<div>
+    <h4>Пуансон </h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiametrHole)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DiametrHole)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiametrSeat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DiametrSeat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiametrFlange)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DiametrFlange)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeightTottal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeightTottal)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeighSeat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeighSeat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeighFlange)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeighFlange)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HeightHole)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HeightHole)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id"><span class="fas fa-edit"></span></a>
+    <br />
+    <br />
+    <a class="btn btn-secondary" asp-action="Index">Назад к списку</a>
+</div>

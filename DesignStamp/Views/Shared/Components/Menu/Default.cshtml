@@ -1,0 +1,29 @@
+﻿ 
+@model IEnumerable<MenuItem>
+<div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+        @foreach (var item in Model)
+        {
+            @if (item.IsPage)
+            {
+                <li class="nav-item">
+                    <a class="nav-item nav-link @item.Active"
+                       asp-area="@item.Area"
+                       asp-page="@item.Page">
+                        @item.Text
+                    </a>
+                </li>
+                    }
+                    else
+                    {
+                    <a class="nav-item nav-link @item.Active"
+                       asp-controller="@item.Controller"
+                       asp-action="@item.Action">
+                        @item.Text
+                    </a>
+                    }
+                    }
+            </ul>
+</div>
+
+

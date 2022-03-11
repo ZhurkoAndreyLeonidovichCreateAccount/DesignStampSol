@@ -1,0 +1,42 @@
+﻿@model DataLayer.Entities.Stamp
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Stamp</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.detail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.detail.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.bushing)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.bushing.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.column)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.column.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.spring)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.spring.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Name">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

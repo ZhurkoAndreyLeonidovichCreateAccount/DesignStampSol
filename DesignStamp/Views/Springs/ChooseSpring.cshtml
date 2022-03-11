@@ -1,0 +1,117 @@
+﻿@model IEnumerable<DataLayer.Entities.Spring>
+
+@{
+    ViewData["Title"] = "ChoosePunch";
+    var groups = ViewData["Drops"] as List<DropVIew>;
+    var currentDiametr = (int)ViewData["Current"];
+    var text = currentDiametr != 0 ? currentDiametr.ToString() : "Все";
+}
+
+<h1>Выберите пружину</h1>
+
+<hr />
+<div class="row ">
+    <h4 div class="col-4">Фильтр по диаметру пуансона:</h4>
+    <div class="col-4">
+        <div class="dropdown mt-2">
+            <a class="btn btn-secondary dropdown-toggle"
+               role="button"
+               id="dropdownMenuLink"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false"
+               asp-controller="Springs" asp-action="ChooseSpring">
+                @text
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                <a class="dropdown-item"
+                   asp-action="ChooseSpring"
+                   asp-controller="Springs"
+                   asp-route-oldId="@groups.FirstOrDefault().OldId"
+                   asp-route-url="@groups.FirstOrDefault().Url">
+
+                    Все
+                </a>
+
+                @foreach (var item in groups.OrderBy(c=>c.Diametr))
+                {
+                <a class="dropdown-item"
+                   asp-action="ChooseSpring"
+                   asp-controller="Springs"
+                   asp-route-diametr="@item.Diametr"
+                   asp-route-oldId="@item.OldId"
+                   asp-route-url="@item.Url">
+                    @item.Diametr
+                </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pspring)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diametr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tmax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stroke)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LengthScrew)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderBy(c=>c.Diametr).ThenBy(c=>c.LengthScrew))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pspring)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diametr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tmin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tmax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stroke)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LengthScrew)
+                </td>
+                <td>
+                    <a class="btn btn-secondary" asp-controller="Stamps" asp-action="EditSpring" asp-route-id="@item.Id" asp-route-oldId="@groups.FirstOrDefault().OldId">Выбрать </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="form-group offset-md-4 col-md-4 ">
+    <a href="@groups.FirstOrDefault().Url" class="btn btn-secondary">
+        Назад
+    </a>
+</div>

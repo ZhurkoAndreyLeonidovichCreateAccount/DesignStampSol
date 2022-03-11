@@ -1,0 +1,68 @@
+﻿@model DataLayer.Entities.Punch
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редактирование</h1>
+
+<h4>Пуансон</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiametrHole" class="control-label"></label>
+                <input asp-for="DiametrHole" class="form-control" />
+                <span asp-validation-for="DiametrHole" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiametrSeat" class="control-label"></label>
+                <input asp-for="DiametrSeat" class="form-control" />
+                <span asp-validation-for="DiametrSeat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiametrFlange" class="control-label"></label>
+                <input asp-for="DiametrFlange" class="form-control" />
+                <span asp-validation-for="DiametrFlange" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeightTottal" class="control-label"></label>
+                <input asp-for="HeightTottal" class="form-control" />
+                <span asp-validation-for="HeightTottal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeighSeat" class="control-label"></label>
+                <input asp-for="HeighSeat" class="form-control" />
+                <span asp-validation-for="HeighSeat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeighFlange" class="control-label"></label>
+                <input asp-for="HeighFlange" class="form-control" />
+                <span asp-validation-for="HeighFlange" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeightHole" class="control-label"></label>
+                <input asp-for="HeightHole" class="form-control" />
+                <span asp-validation-for="HeightHole" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <input type="submit" value="Сохранить" class="col-md-4 btn btn-secondary" />
+                <a class="col-md-5 offset-md-3 btn btn-secondary" asp-action="Index">Назад к списку </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

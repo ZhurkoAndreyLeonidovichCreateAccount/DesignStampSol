@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DataLayer.Entities.Column>
+
+@{
+    ViewData["Title"] = "Index";
+   
+}
+
+<h1>Колонки</h1>
+
+<p>
+    <a class="btn btn-outline-primary" asp-action="Create"><span class="fas fa-folder-plus"></span></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diametr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightDepth)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diametr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightDepth)
+            </td>
+            <td class="col-md-3">
+
+                <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id"><span class="fas fa-edit"></span></a>
+                <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.Id"><span class="fas fa-info"></span></a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><span class="fas fa-trash-alt"></span></a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="row">
+   
+    <a class="col-md-3 offset-md-4 btn btn-secondary" asp-controller="Admin">
+        Назад к администрированию
+    </a>
+
+</div>

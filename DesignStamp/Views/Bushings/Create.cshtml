@@ -1,0 +1,57 @@
+﻿@model DataLayer.Entities.Bushing
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Создание</h1>
+
+<h4>Втулка</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PressedDiametr" class="control-label"></label>
+                <input asp-for="PressedDiametr" class="form-control" />
+                <span asp-validation-for="PressedDiametr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlangeDiametr" class="control-label"></label>
+                <input asp-for="FlangeDiametr" class="form-control" />
+                <span asp-validation-for="FlangeDiametr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColumnDiametr" class="control-label"></label>
+                <input asp-for="ColumnDiametr" class="form-control" />
+                <span asp-validation-for="ColumnDiametr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalHeight" class="control-label"></label>
+                <input asp-for="TotalHeight" class="form-control" />
+                <span asp-validation-for="TotalHeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepthHeight" class="control-label"></label>
+                <input asp-for="DepthHeight" class="form-control" />
+                <span asp-validation-for="DepthHeight" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <input type="submit" value="Создать" class="col-md-4 btn btn-secondary" />
+                <a class="col-md-5 offset-md-3 btn btn-secondary" asp-action="Index">Назад к списку </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

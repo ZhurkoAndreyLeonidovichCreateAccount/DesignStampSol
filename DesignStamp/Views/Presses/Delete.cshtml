@@ -1,0 +1,53 @@
+﻿@model DataLayer.Entities.Press
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы действительно хотите удалить пресс?</h3>
+<div>
+    <h4>Пресс</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ppress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ppress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PressRamStroke)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PressRamStroke)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LengthAdapt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LengthAdapt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WidthAdapt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WidthAdapt)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удаление" class="btn btn-danger" />
+        <br />
+        <br />
+        <a class="btn btn-secondary" asp-action="Index">Назад к списку</a>
+    </form>
+</div>

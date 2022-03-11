@@ -1,0 +1,75 @@
+﻿@model CoverView
+
+@{
+    ViewData["Title"] = "Column";
+    var name = (string)ViewData["Name"];
+}
+
+
+<h3>Кожух</h3>
+<div class=" img-fluid">
+    <img src="~/images/Кожух.png" width="370" height="350" />
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diametr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalHeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PressHeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountCover)
+            </th>
+            
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Diametr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.TotalHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.PressHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.AmountCover)
+            </td>
+            
+            <td>
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                <a class="btn btn-outline-info" asp-controller="Covers" asp-action="ChooseCover" asp-route-diametr="@Model.Diametr" asp-route-oldId="@Model.Id" asp-route-url="@returnUrl"><span class="fas fa-edit"></span></a>
+
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>
+<div class="row">
+
+    <a class="col-md-4 offset-md-4 btn btn-secondary" asp-controller="Stamps" asp-action="GetStamp" asp-route-stampName="@name"> Вернутся к штампу</a>
+
+</div>

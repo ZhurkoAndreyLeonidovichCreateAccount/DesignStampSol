@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DataLayer.Entities.Stamp>
+
+@{
+    ViewData["Title"] = "GetAllStamp";
+    int Flag = (int)ViewData["Flag"];
+}
+
+<h2>Все штампы</h2>
+
+<form  asp-controller="Stamps" asp-action="GetAllStamps">
+    <div class="form-group row">
+        <div class="col-md-3">
+            <input class="form-control me-2 " type="search" name="StampName" placeholder="Введите № штампа" aria-label="Search">
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-outline-success " type="submit">Поиск</button>
+        </div>
+     </div>
+</form>
+@if(Model.Count()!=0)
+{ 
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.press.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClosedHeight)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.detailName)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.press.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClosedHeight)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.detailName)
+                    </td>
+
+                    <td>
+                        @{ // Получение текущего адреса
+                            var request = ViewContext.HttpContext.Request;
+                            var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                        }
+                        <a class="btn btn-outline-success" asp-controller="Stamps" asp-action="GetStamp" asp-route-stampName="@item.Name" asp-route-returnUrl="@returnUrl"><span class="fas fa-info"></span></a>
+                        <span>&nbsp</span>
+                        <a class="btn btn-outline-danger" asp-action="DeleteStamp" asp-route-stampName="@item.Name" asp-route-returnUrl="@returnUrl"> <span class="fas fa-trash-alt"></span></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+ }
+       else if(Flag==0)
+       {
+        <h3>Нету ни одного рассчитанного штампа</h3>
+       }
+       else if(Flag==1)
+       {
+        <h3>Штамп с таким номером не найден</h3>
+       }
+

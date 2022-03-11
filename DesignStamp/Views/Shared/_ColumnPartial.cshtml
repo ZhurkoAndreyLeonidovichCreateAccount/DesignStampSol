@@ -1,0 +1,64 @@
+﻿@model ColumnView
+<h3>Колонки</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th  width="110" class="align-text-top">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Diametr)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th class="align-text-top"> 
+                @Html.DisplayNameFor(model => model.HeightDepth)
+            </th>
+
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.AmountColumn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Diametr)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.HeightDepth)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Weight)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.AmountColumn)
+            </th>
+            <td  width="110">
+
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                <a class="btn btn-outline-info" asp-controller="Columns" asp-action="ChooseColumn" asp-route-diametr="@Model.Diametr" asp-route-oldId="@Model.Id" asp-route-url="@returnUrl"><span class="fas fa-edit"></span></a>
+                <a class="btn btn-outline-success" asp-controller="Columns" asp-action="DetailsView" asp-route-id="@Model.Id"><span class="fas fa-info"></span></a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+

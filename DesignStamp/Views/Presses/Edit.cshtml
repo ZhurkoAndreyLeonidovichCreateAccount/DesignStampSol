@@ -1,0 +1,53 @@
+﻿@model DataLayer.Entities.Press
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редактирование</h1>
+
+<h4>Пресс</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ppress" class="control-label"></label>
+                <input asp-for="Ppress" class="form-control" />
+                <span asp-validation-for="Ppress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PressRamStroke" class="control-label"></label>
+                <input asp-for="PressRamStroke" class="form-control" />
+                <span asp-validation-for="PressRamStroke" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LengthAdapt" class="control-label"></label>
+                <input asp-for="LengthAdapt" class="form-control" />
+                <span asp-validation-for="LengthAdapt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WidthAdapt" class="control-label"></label>
+                <input asp-for="WidthAdapt" class="form-control" />
+                <span asp-validation-for="WidthAdapt" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <input type="submit" value="Сохранить" class="col-md-4 btn btn-secondary" />
+                <a class="col-md-5 offset-md-3 btn btn-secondary" asp-action="Index">Назад к списку </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,87 @@
+﻿@model SpringView
+
+<h3>Пружины</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th  width="110" class="align-text-top">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Diametr)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.LengthScrew)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Pspring)
+            </th>
+
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Stroke)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Tmin)
+            </th>
+
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Tmax)
+            </th>
+
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.MinAmountSpring)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Diametr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.LengthScrew)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Pspring)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Stroke)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Tmin)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Tmax)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.MinAmountSpring)
+            </td>
+
+
+
+            <td  width="110">
+
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                <a class="btn btn-outline-info" asp-controller="Springs" asp-action="ChooseSpring" asp-route-diametr="@Model.Diametr" asp-route-oldId="@Model.Id" asp-route-url="@returnUrl"><span class="fas fa-edit"></span></a>
+                <a class="btn btn-outline-success" asp-controller="Springs" asp-action="DetailsView" asp-route-id="@Model.Id"><span class="fas fa-info"></span></a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+

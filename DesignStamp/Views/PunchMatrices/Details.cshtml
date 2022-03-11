@@ -1,0 +1,70 @@
+﻿
+@model PunchMatrixView
+<h3>Пуансон-матрица</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hieght)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlangeHieght)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlangeWidth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Hieght)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.FlangeHieght)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.FlangeWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Weight)
+            </td>
+            <td>
+
+                <a class="btn btn-outline-info" asp-controller="PunchMatrices" asp-action="Edit" asp-route-stampName="@Model.StampName"><span class="fas fa-edit"></span></a>
+                
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="row">
+
+    <a class="col-md-4 offset-md-4 btn btn-secondary" asp-controller="Stamps" asp-action="GetStamp" asp-route-stampName="@Model.StampName"> Вернутся к штампу</a>
+
+</div>

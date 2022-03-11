@@ -1,0 +1,55 @@
+﻿@model DataLayer.Entities.Detail
+
+@{
+    ViewData["Title"] = "Delete";
+    string url = (string)ViewData["Url"] ?? "#";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы действительно хотите удалить штамп?</h3>
+<div>
+    <h4>Деталь</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Length)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Length)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Width)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Width)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Thickness)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Thickness)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShearingStress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShearingStress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AmountDiametrHoles)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AmountDiametrHoles)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteConfirmed" asp-controller="Details">
+        <input type="hidden" asp-for="Name" />
+        <input type="submit" value="Удаление" class="btn btn-danger" />
+        <br />
+        <br />
+        <a class="btn btn-secondary" href="@url">Назад </a>
+    </form>
+</div>
+

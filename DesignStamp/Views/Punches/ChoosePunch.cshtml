@@ -1,0 +1,124 @@
+﻿@model IEnumerable<DataLayer.Entities.Punch>
+
+@{
+    ViewData["Title"] = "ChoosePunch";
+    var groups = ViewData["Drops"] as List<DropVIew>;
+    var currentDiametr = (int)ViewData["Current"];
+    var text = currentDiametr != 0 ? currentDiametr.ToString() : "Все";
+}
+
+<h1>Выберите пуансон</h1>
+
+<hr />
+<div class="row ">
+    <h4 div class="col-4">Фильтр по диаметру пуансона:</h4>
+    <div class="col-4">
+        <div class="dropdown mt-2">
+            <a class="btn btn-secondary dropdown-toggle"
+               role="button"
+               id="dropdownMenuLink"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false"
+               asp-controller="Punshes" asp-action="ChoosePunch">
+                @text
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                <a class="dropdown-item"
+                   asp-action="ChoosePunch"
+                   asp-controller="Punches"
+                   asp-route-oldId="@groups.FirstOrDefault().OldId"
+                   asp-route-url="@groups.FirstOrDefault().Url">
+
+                    Все
+                </a>
+
+                @foreach (var item in groups.OrderBy(c=>c.Diametr))
+                {
+                    <a class="dropdown-item"
+                       asp-action="ChoosePunch"
+                       asp-controller="Punches"
+                       asp-route-diametr="@item.Diametr"
+                       asp-route-oldId="@item.OldId"
+                       asp-route-url="@item.Url">
+                        @item.Diametr
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiametrHole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiametrSeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiametrFlange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightTottal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeighSeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeighFlange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightHole)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderBy(c=>c.DiametrHole).ThenBy(c=>c.HeightTottal))
+        {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiametrHole)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiametrSeat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiametrFlange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightTottal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeighSeat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeighFlange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightHole)
+            </td>
+            <td>
+                <a class="btn btn-secondary" asp-controller="Stamps" asp-action="EditPunch" asp-route-id="@item.Id" asp-route-oldId="@groups.FirstOrDefault().OldId">Выбрать </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div class="form-group offset-md-4 col-md-4 ">
+    <a href="@groups.FirstOrDefault().Url" class="btn btn-secondary">
+        Назад
+    </a>
+</div>

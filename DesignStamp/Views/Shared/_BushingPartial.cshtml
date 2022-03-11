@@ -1,0 +1,78 @@
+﻿@model BushingView
+
+<h3>Втулки</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="110" class="align-text-top">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.PressedDiametr)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.FlangeDiametr)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.ColumnDiametr)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.TotalHeight)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.DepthHeight)
+            </th>
+
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.AmountBushing)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.PressedDiametr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.FlangeDiametr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.ColumnDiametr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.TotalHeight)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.DepthHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Weight)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.AmountBushing)
+            </td>
+            <td width="110" >
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                <a class="btn btn-outline-info" asp-controller="Bushings" asp-action="ChooseBushing" asp-route-diametr="@Model.ColumnDiametr" asp-route-oldId="@Model.Id" asp-route-url="@returnUrl"><span class="fas fa-edit"></span></a>
+                <a class="btn btn-outline-success" asp-controller="Bushings" asp-action="DetailsView" asp-route-id="@Model.Id"><span class="fas fa-info"></span></a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

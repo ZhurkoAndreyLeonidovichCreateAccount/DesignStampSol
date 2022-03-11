@@ -1,0 +1,82 @@
+﻿@model IEnumerable<DataLayer.Entities.EnlargedPunch>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Увеличенные пуансоны</h1>
+
+<p>
+    <a class="btn btn-outline-primary" asp-action="Create"><span class="fas fa-folder-plus"></span></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiametrHoleFirst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiametrHoleLast)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiametrSeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiametrFlange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightTottal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeighSeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeighFlange)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiametrHoleFirst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiametrHoleLast)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiametrSeat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiametrFlange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightTottal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeighSeat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeighFlange)
+            </td>
+            <td class="col-md-3">
+
+                <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id"><span class="fas fa-edit"></span></a>
+                <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.Id"><span class="fas fa-info"></span></a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><span class="fas fa-trash-alt"></span></a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a class="col-md-3 offset-md-4 btn btn-secondary" asp-controller="Admin">
+    Назад к администрированию
+</a>

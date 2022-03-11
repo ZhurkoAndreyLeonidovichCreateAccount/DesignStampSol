@@ -1,0 +1,40 @@
+﻿@model List<DifferHole>
+@{
+    ViewData["Title"] = "DifferHoles";
+}
+
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="AllDataView">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @for (int i = 0; i < (int)ViewData["Amount"]; i++)
+            {
+                <h3>Введие данные по отверстиям:</h3>
+                <div class="form-group">
+                    <label asp-for="@Model[i].Diametr" class="control-label"></label>
+                    <input asp-for="@Model[i].Diametr" class="form-control" placeholder="5 - 51"/>
+                    <span asp-validation-for="@Model[i].Diametr" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model[i].AmountHole" class="control-label"></label>
+                    <input asp-for="@Model[i].AmountHole" class="form-control" placeholder="1 - 50" />
+                    <span asp-validation-for="@Model[i].AmountHole" class="text-danger"></span>
+                </div>
+            }
+
+            <div class="row">
+                <input type="submit" value="Далее" class="col-md-4 btn btn-secondary" />
+                <a asp-action="Index" class="col-md-4 offset-md-4 btn btn-secondary" asp-route-flag="1">Назад</a>
+
+            </div>
+
+        </form>
+    </div>
+</div>

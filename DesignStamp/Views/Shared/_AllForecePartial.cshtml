@@ -1,0 +1,49 @@
+﻿@model AllForceView
+<h3>Все усилия</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.Pfelling)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ppunching)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ptotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ppress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qremoval)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Pfelling)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Ppunching)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Ptotal)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Ppress)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Qremoval)
+            </td>
+            <td  width="110">
+                <a class="btn btn-outline-success" asp-controller="Stamps" asp-action="GetAllForce" asp-route-stampName="@Model.StampName"><span class="fas fa-info"></span></a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

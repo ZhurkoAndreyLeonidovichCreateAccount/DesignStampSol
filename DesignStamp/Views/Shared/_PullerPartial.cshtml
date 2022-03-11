@@ -1,0 +1,57 @@
+﻿@model PullerView
+
+<h3>Съемник</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th  width="110">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Hieght)
+            </th>
+            <th class="align-text-top">
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        
+        <tr>
+           <td>
+            @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Hieght)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Weight)
+            </td>
+            <td  width="110">
+
+                @{ // Получение текущего адреса
+                    var request = ViewContext.HttpContext.Request;
+                    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+                }
+                <a class="btn btn-outline-info" asp-controller="Pullers" asp-action="Edit" asp-route-stampName="@Model.StampName" asp-route-returnUrl="@returnUrl"><span class="fas fa-edit"></span></a>
+                <a class="btn btn-outline-success" asp-controller="Pullers" asp-action="Details" asp-route-stampName="@Model.StampName"><span class="fas fa-info"></span></a>
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
